@@ -43,7 +43,7 @@ build_and_push_to_docker_hub:
         with:
           push: true
           tags: yadovj/infra_actions:latest 
-deploy:
+    deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
@@ -57,4 +57,4 @@ deploy:
         script: |
           sudo docker pull yadovj/infra_actions
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 yadovj/infra_actions  
+          sudo docker run --rm -d -p 5000:5000 yadovj/infra_actions   
